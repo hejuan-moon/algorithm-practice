@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒泡排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+
+    var arr = [5, 10, 29, 5, 89, 8, 22, 34, 6]
+
+    function maopao(arr) {
+        // 外层i控制比较的轮数
+        for (var i = 0; i < arr.length - 1; i++) {
+            //里层j控制每一轮比较的次数
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+                }
+            }
+        }
+        return arr
+    }
+    console.log(maopao(arr))
+
+</script>

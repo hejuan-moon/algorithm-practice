@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手动实现一个call</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    var name = '全局的小明'
+    var obj = {
+        name: 'obj里面的小明'
+    }
+
+    function getName() {
+        console.log(this.name)
+    }
+    // getName()
+
+    //思路：把要执行的函数赋值给对象，然后让对象去调用这个函数，那函数里面的this自然就指向该对象
+    Function.prototype.myCall = function (obj, ...args) {
+        console.log(...args)
+        let cxt = obj || window
+        cxt.fn = this   //this指向执行myCall的函数，也就是getName
+        args = args ? args : []
+        const res = args.length > 0 ? cxt.fn(...args) : cxt.fn()
+        delete cxt.fn  //最后记得删除，不然方法会越来越多
+        // return res
+    }
+
+    getName.myCall(obj,1,2,3)
+</script>

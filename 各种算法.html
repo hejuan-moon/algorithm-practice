@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+
+    // var arr = [5, 10, 29, 5, 89, 8, 22, 34, 6]
+
+    // function quickSort(arr) {
+    //     if (arr.length <= 1) { return arr; }
+    //     let middle = Math.floor(arr.length / 2)
+    //     const fMiddle = arr.splice(middle, 1)[0]
+    //     console.log(fMiddle)
+    //     var left = []
+    //     var right = []
+    //     debugger
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (arr[i] < fMiddle) {
+    //             left.push(arr[i])
+    //         } else {
+    //             right.push(arr[i])
+    //         }
+    //     }
+    //     return quickSort(left).concat([fMiddle], quickSort(right))
+
+    // }
+
+    // console.log(quickSort(arr))
+
+    // function maopao(arr) {
+    //     for (var i = 0; i < arr.length - 1; i++) {
+    //         for (var j = 0; j < arr.length - 1 - i; j++) {
+    //             if (arr[j] > arr[j + 1]) {
+    //                 [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+    //             }
+    //         }
+    //     }
+    //     return arr
+    // }
+    // console.log(maopao(arr))
+
+    // function add(arr, num) {
+    //     arr.sort();
+    //     let middle = 0;
+    //     for (var i = 0; i < arr.length; i++) {
+    //         middle = arr[i] + arr[i + 1]
+    //         if (middle < num) {
+    //             const newArr = [...arr]
+    //             newArr.splice(0, i+2)
+    //             for (j = 0; j < newArr.length; j++) {
+    //                 if (newArr[j] == (num - middle)){
+    //                     console.log(arr[i],arr[i+1],newArr[j])
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    // add([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)
+
+    // function searchStr(arr) {
+    //     const obj = arr.reduce((acc, cur, index) => {
+    //         acc[cur] ? acc[cur]++ : acc[cur] = 1
+    //         return acc
+    //     }, {})
+    //     return obj
+    // }
+    // console.log(searchStr([9, 5, 2, 5, 6, 5, 8]))
+
+    // function fandou(fn, wait) {
+    //     let timer = null;
+    //     return () => {
+    //         if (timer) {
+    //             clearTimeout(tiimer)
+    //             timer = setTimeout(fn, wait)
+    //         }
+    //     }
+    // }
+
+    // function jieliu(fn, wait) {
+    //     let timer = null
+    //     if (!timer) {
+    //         timer = setTimeout(() => {
+    //             fn();
+    //             timer = null
+    //         }, wait)
+    //     }
+    //
+    // abcba+1
+    // function huiwen2(str) {
+    //     const arr = str.split('')
+    //     const len = arr.length
+    //     let flag = true;
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (len % 2 == 0) {
+    //             if (arr[i] != arr[len - 1 - i]) {
+    //                 flag = false;
+    //                 break;
+    //             }
+    //         } else {
+    //             arr.splice(Math.floor(len / 2), 1)
+    //             if (arr[i] != arr[len- 1 - i]) {
+    //                 flag = false;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return flag
+    // }
+
+    // console.log(huiwen2('abcba'))
+    // let str1 = '2342256'
+    // let str2 = '2256234'
+    // function xuanzhuan(str1, str2) {
+    //     let arr1 = str1.split('')
+    //     let arr2 = str2.split('')
+    //     let len = arr1.length
+    //     let flag = false;
+    //     if (len != arr2.length) {
+    //         flag = false
+    //     }
+
+    //     for (let start = 0; start < arr1.length; start++) {
+    //         var result = true;
+    //         for (let i = 0; i < arr1.length; i++) {
+    //             if (arr1[i] != arr2[(i + start) % len]) {
+    //                 result = false;
+    //                 break;
+    //             }
+    //         }
+    //         if(result){
+    //             return true;
+    //         }
+    //     }
+
+    //     return false;
+    // }
+
+    // function simpleOne(str1, str2) {
+    //     let str3 = str2 + str2;
+    //     console.log(str3);
+    //     if (str3.indexOf(str1) > 0) {
+    //         return true
+    //     }
+    //     return false
+    // }
+
+    // console.log(xuanzhuan(str1, str2))
+
+    // console.log(Object.prototype.toString.call("abc"));//"[object String]"
+    // let person={name:'小小'}
+    // console.log(person.__proto__.toString)
+    // console.log(null instanceof Object)
+
+    // let arr = [0, 13, 21, 35, 46, 52, 68, 77, 89, 94]
+    // function search(arr, num, startIndex, endIndex) {
+    //     let start = startIndex || 0
+    //     let end = endIndex ? endIndex : arr.length - 1
+    //     let middle = Math.floor((start + end) / 2)
+    //     if (arr[middle] == num) {
+    //         return arr[middle]
+    //     }
+    //     if (num < arr[middle]) {
+    //         end = middle - 1
+    //     } else {
+    //         start = middle + 1
+    //     }
+    //     return search(arr, num, start, end)
+    // }
+    // console.log(search(arr,52))
+
+    // function fblq(n) {
+    //     if (n == 1 || n == 2) {
+    //         return n
+    //     }
+    //     return fblq(n-1)+fblq(n-2)
+    // }
+    // console.log(fblq(6))
+    // function sortQ(pick, arr,result) {
+    //     if (pick.length == arr.length) {
+    //         result.push([...pick]);
+    //         return
+    //     }
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (pick.includes(arr[i])) {
+    //             continue;
+    //         } else {
+    //             pick.push(arr[i])
+    //             sortQ(pick, arr,result)
+    //             pick.splice(pick.length - 1, 1)
+    //         }
+    //     }
+
+    // }
+
+    // function listAll(arr){
+    //     var result = []
+    //     sortQ([],arr,result)
+    //     return result
+    // }
+
+    // console.log(listAll([1,2,3]))
+
+    // const obj = {
+    //     a: {
+    //         b: 1,
+    //         c: 2,
+    //         d: {
+    //             e: 5
+    //         }
+    //     },
+    //     b: [1, 3, { a: 2, b: 3 }],
+    //     c: 3
+    // }
+
+    // function myFlatten(obj, prefix, idx, result) {
+    //     Object.keys(obj).map((e) => {
+    //         if (obj[e].constructor !== Object && obj[e].constructor !== Array) {
+    //             if (idx) {
+    //                 console.log(prefix + "[" + idx + "]" + "." + e + ":" + obj[e])
+    //                 result[prefix + "[" + idx + "]" + "." + e] = obj[e]
+    //             }
+    //             if (prefix && !idx) {
+    //                 console.log(prefix + "." + e + ":" + obj[e])
+    //                 result[prefix + "." + e] = obj[e]
+    //             }
+    //             if (!prefix && !idx) {
+    //                 console.log(e + ":" + obj[e])
+    //                 result[e] = obj[e]
+    //             }
+    //             return
+    //         }
+    //         if (obj[e].constructor == Object) {
+    //             myFlatten(obj[e], prefix ? prefix + "." + e : e, null, result)
+    //         } else if (obj[e].constructor == Array) {
+    //             obj[e].forEach((arrE, index) => {
+    //                 if (arrE.constructor == Object) {
+    //                     myFlatten(arrE, prefix ? prefix + "." + e : e, index, result)
+    //                 } else {
+    //                     console.log(prefix ? prefix + "." + e : e + "[" + index + "]" + ":" + arrE)
+    //                     result[prefix ? prefix + "." + e : e + "[" + index + "]"] = arrE
+    //                 }
+    //             })
+    //         }
+
+    //     })
+    // }
+    // function all(obj) {
+    //     let result = {}
+    //     myFlatten(obj, null, null, result)
+    //     return result
+    // }
+    // console.log(all(obj))
+    //     const a=[1,2,3]
+    //     function objectFlat(obj = '') {
+    //         const res = {}
+    //         function flat(item, preKey = '') {
+    //             Object.entries(item).forEach(([key, value]) => {
+    //                 let newKey = key
+    //                 if (Array.isArray(item)) {
+    //                     newKey = preKey ? `${preKey}[${key}]` : key
+    //                 } else {
+    //                     newKey = preKey ? `${preKey}.${key}` : key
+    //                 }
+    //                 if (value && typeof value === 'object') {
+    //                     flat(value, newKey)
+    //                 } else {
+    //                     res[newKey] = value
+    //                 }
+    //             });
+    //         }
+    //         flat(obj)
+    //         return res
+    //     }
+    //   console.log(objectFlat(obj)) 
+
+    // function similarStr(str1, str2) {
+    //     let result = true
+    //     if (str1.length !== str2.length) return result = false
+    //     const arr1 = str1.split('');
+    //     const arr2 = str2.split('');
+    //     let obj1 = num(arr1)
+    //     let obj2 = num(arr2)
+    //     console.log(obj1, obj2)
+    //     Object.entries(obj1).forEach(([key, value]) => {
+    //         // console.log(obj1[key], obj2[key])
+    //         if (obj1[key] !== obj2[key]) {
+    //             result = false
+    //         }
+    //     })
+    //     return result
+    // }
+
+    // function num(arr) {
+    //     const obj = arr.reduce((acc, cur, index) => {
+    //         acc[cur] ? acc[cur]++ : acc[cur] = 1
+    //         return acc
+    //     }, {})
+    //     return obj
+    // }
+
+
+    // const str1 = '12344'
+    // const str2 = '22134'
+    // console.log(similarStr(str1, str2)) 
+
+
+    // 每次随机获取数组中数值，保证下次获取的不能和上一次的每一次重复，直到数组全部输出为止
+    const a = [1, 2, 4, 1, 6, 3, 2, 6, 7, 1]
+
+
+
+</script>

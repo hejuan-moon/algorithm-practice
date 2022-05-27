@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceof 实现</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    function Parent(name, age) {
+        this.name = name;
+        this.age = age
+
+    }
+    function Parent2(name, age) {
+        this.name = name;
+        this.age = age
+
+    }
+    const p1 = new Parent('小小', 18)
+
+    function myInnstanceOf(a, b) {
+        let left = a.__proto__;
+        let right = b.prototype
+        while (true) {
+            if (left == null) {
+                return false
+            }
+            if (left == right) {
+                return true
+            }
+
+            left = left.__proto__
+        }
+    }
+
+    console.log(p1 instanceof Object)
+    console.log(myInnstanceOf(p1, Parent2))
+
+    console.log(myInnstanceOf(p1, Parent))
+
+
+</script>

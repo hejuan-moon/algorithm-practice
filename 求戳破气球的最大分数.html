@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    const arr = [2, 5, 3, 4]
+    function getMax(arr) {
+        let newArr = [...arr]
+        let max = 0;
+        let result = 0;
+        // let index = 0;
+        function innerMax(newArr) {
+            newArr.forEach((e,index) => {
+            result += e * newArr[index - 1] ? newArr[index - 1] : 1 * newArr[index + 1] ? newArr[index + 1] : 1
+            newArr.splice(index, 1)
+            if (newArr > 0) {
+                innerMax(newArr)
+            }
+            });
+            if (result > max) {
+                max = result
+            }
+        }
+        return max
+    }
+    console.log(getMax(arr))
+</script>

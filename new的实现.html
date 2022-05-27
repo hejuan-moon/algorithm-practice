@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合寄生继承</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    function Parent(name, age) {
+        this.name = name
+        this.age = age
+    }
+    function Parent(name, age,sex) {
+        this.name = name
+        this.age = age
+        this.sex = sex
+
+    }
+    Parent.prototype.say = function () {
+        console.log(`${this.name}${this.age}岁了`)
+    }
+    function myNew(parent, ...rest) {
+        console.log(rest)
+        console.log(...rest)
+        let child = Object.create(parent.prototype)
+        parent.apply(child, rest)
+        parent();
+        // parent.call(child,...rest)
+        return child
+    }
+
+    const son = myNew(Parent, '小小', 1)
+    const son2 = new Parent('小小', 2)
+    console.log(son)
+    // console.log(son.say())
+
+    console.log(son2)
+
+</script>

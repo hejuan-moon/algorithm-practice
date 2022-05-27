@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流和防抖</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>防抖和节流</div>
+    <input type="text" />
+    <div class="box"></div>
+
+</body>
+
+</html>
+
+
+<script>
+    // 防抖
+    let telInput = document.querySelector('input')
+    // telInput.addEventListener('input', antiShank(setRequest, 2000))
+
+    let box = document.querySelector('.box')
+    // box.addEventListener('touchmove', throlle(setRequest, 2000))
+
+
+
+    // 封装防抖
+
+    function antiShank(fn, time) {
+        let timer = null;
+        return () => {
+            if (timer) clearTimeout(timer)
+            timer = setTimeout(fn, time);
+        }
+    }
+
+    // 节流
+    function throlle(fn, time) {
+        let timer = null;
+        return () => {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    fn(); 
+                    timer = null
+                }, time)
+            }
+        }
+    }
+
+
+
+    function sqrt(num) {
+        if (num == 0 || num == 1) {
+            return num
+        } else if (num > 1) {
+            var left = 1
+            var right = num
+            while (left < right) {
+                var middle = (left + right) / 2.0
+                var offset = middle * middle - num
+                if (offset > 0) {
+                    if ((middle - 0.001) * (middle - 0.001) < num) {
+                        if (num - (middle - 0.001) * (middle - 0.001) < offset) {
+                            return middle - 0.001
+                        } else {
+                            return middle
+                        }
+                    } else {
+                        right = middle
+                    }
+                } else if (offset == 0) {
+                    return middle
+                } else {
+                    left = middle
+                }
+            }
+
+            return left
+        } else {
+            var left = num
+            var right = 1
+            while (left < right) {
+                console.log(left, right)
+                var middle = (left + right) / 2.0
+                var offset = middle * middle - num
+                if (offset > 0) {
+                    if ((middle - 0.001) * (middle - 0.001) < num) {
+                        if (num - (middle - 0.001) * (middle - 0.001) < offset) {
+                            return middle - 0.001
+                        } else {
+                            return middle
+                        }
+                    } else {
+                        right = middle
+                    }
+                } else if (offset == 0) {
+                    return middle
+                } else {
+                    left = middle
+                }
+            }
+            return left
+        }
+    }
+    console.log(sqrt(0.09))
+
+    var a = { rep: 'apple' }
+    let b = Object.create(a)
+    // console.log(b)  // {}
+    console.log(b.__proto__) // {rep: "apple"}
+    console.log(b.rep) // {rep: "apple"}
+
+    const hello = parseInt('he123')
+    let number=1;
+    number='2'
+    number='3'
+    console.log(number)
+</script>

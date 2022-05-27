@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局，左边固定宽度，右边宽度自适应</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    class Node {
+        constructor(data) {
+            this.data = data;  // 节点的数据域
+            this.next = null;  // 节点的指针域
+        }
+    }
+    //给定头节点，链表末尾增加一个值为value的节点，并返回头节点
+    function add(head, value) {
+        var node = new Node(value)
+        let curNode = head
+        while (curNode.next) {
+            curNode = curNode.next
+        }
+        curNode.next = node
+        return head
+    }
+
+    //给定头节点，删除值为value的节点
+    function remove(head, value) {
+        let curNode = head;
+        if (head.data == value) {
+            const nextNode = head.next;
+            head.next = null
+            return nextNode
+        }
+        while (curNode.next && curNode.next.data != value) {
+            curNode = curNode.next
+        }
+        curNode.next = curNode.next.next
+
+        return head
+    }
+
+    //遍历链表
+    function tranverse(head) {
+        let curNode = head
+        while (curNode) {
+            console.log(curNode.data)
+            curNode = curNode.next
+        }
+    }
+
+    //更新链表中 所有value值为old的节点，将其value改为newValue
+    function update(head, old, newValue) {
+        let curNode = head
+        while (curNode) {
+            if (curNode.data == old) {
+                curNode.data = newValue
+            }
+            curNode = curNode.next
+        }
+    }
+
+    function findMidNode(head) {
+        let total = 1
+        let curNode = head
+        while (curNode.next) {
+            curNode = curNode.next
+            total++
+        }
+        const middle = Math.floor(total / 2);
+        let i = 0;
+        curNode = head
+        while (i < middle) {
+            curNode = curNode.next
+            i++
+        }
+        return curNode
+    }
+
+    function findKFromLast(head, k) {
+        let total = 1
+        let curNode = head
+        while (curNode.next) {
+            curNode = curNode.next
+            total++
+        }
+        const diff = total - k
+        let i = 0;
+        curNode = head
+        while (i < diff) {
+            curNode = curNode.next
+            i++
+        }
+        return curNode
+    }
+
+    let node1 = new Node(1)
+    add(node1, 2)
+    add(node1, 3)
+    add(node1, 4)
+    add(node1, 5)
+    add(node1, 6)
+    add(node1, 7)
+
+
+    const newNode = remove(node1, 1)
+    tranverse(newNode)
+
+
+    // console.log(findMidNode(node1))
+
+    // console.log(findKFromLast(node1,6))
+
+</script>

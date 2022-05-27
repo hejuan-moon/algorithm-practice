@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+
+    let str1 = '2342256'
+    let str2 = '2256234'
+    function xuanzhuan(str1, str2) {
+        let arr1 = str1.split('')
+        let arr2 = str2.split('')
+        let len = arr1.length
+        let flag = false;
+        if (len != arr2.length) {
+            flag = false
+        }
+
+        for (let start = 0; start < arr1.length; start++) {
+            var result = true;
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] != arr2[(i + start) % len]) {
+                    result = false;
+                    break;
+                }
+            }
+            if(result){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    console.log(xuanzhuan(str1, str2))
+
+
+    
+</script>

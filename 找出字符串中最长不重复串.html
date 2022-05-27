@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局，左边固定宽度，右边宽度自适应</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    function getLong(str) {
+        let arr = str.split('');
+        let obj = {}
+        let max = 0;
+        let maxIndex = []
+        arr.forEach((e, index) => {
+            !obj[e] ? obj[e] = [index] : obj[e].push(index)
+        });
+
+        console.log(obj, '90')
+        Object.keys(obj).map((e, index) => {
+            let arrIndex = obj[e]
+            let len = arrIndex.length
+            if (arrIndex[len - 1] - arrIndex[0] > max) {
+                max = arrIndex[len - 1] - arrIndex[0]
+                maxIndex = [arrIndex[0], arrIndex[len - 1]]
+            }
+        })
+        console.log(max, maxIndex)
+        const newStr = str.substring(maxIndex[0], maxIndex[1])
+        return newStr
+    }
+
+    console.log(getLong('abcdaefedd'))
+
+
+    function getLong2(str) {
+        let arr = str.split('');
+        let max = 0;
+        let finallyResult = []
+        let newArr = []
+        arr.forEach((e, index) => {
+            if (newArr.indexOf(e) < 0) {
+                newArr.push(e)
+            } else {
+                if (newArr.length > max) {
+                    max = newArr.length
+                    finallyResult = newArr
+                }
+                const result = newArr.slice(newArr.indexOf(e) + 1, newArr.length + 1)
+                newArr = [...result]
+                newArr.push(e)
+            }
+        })
+        console.log(finallyResult, max)
+    }
+    // console.log(getLong2('bcdbcaea'))
+
+</script>

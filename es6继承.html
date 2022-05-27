@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合寄生继承</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    class Parent {
+        constructor(name, age) {
+            console.log('父类的构造函数',name, age)
+            this.name = name;
+            this.age = age;
+        }
+
+        say() {
+            console.log(`${this.name}${this.age}岁了`)
+        }
+    }
+
+    class Son extends Parent {
+        // constructor(name = '人', age = '18') {
+        //     super(name, age)
+        // }
+        say() {
+          console.log('儿子说话')
+        }
+    }
+
+    const s1 = new Son()
+    // s1.say=function(){
+    //     console.log('实例自己的方法')
+    // }
+    console.log(s1)
+    // s1.say()
+</script>

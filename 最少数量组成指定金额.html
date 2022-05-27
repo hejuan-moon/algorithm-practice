@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+    let arr = [1,3,5]  //金钱面额
+
+    function getMoney(arr, num) {
+        let result = null;
+        let resultArr = [];
+        function getInnerMoney(arr, num) {
+            for (let i = 0; i < arr.length; i++) {
+                const middleNum = num - result
+                if (middleNum == 0) return
+                if (arr[i] == middleNum) {
+                    result += arr[i];
+                    resultArr.push(arr[i])
+                    break;
+                }
+                if (arr[i] > middleNum && i != 0) {
+                    result += arr[i - 1];
+                    resultArr.push(arr[i - 1])
+                    getInnerMoney(arr, num)
+                    break;
+                }
+                if (arr[arr.length - 1] < middleNum) {
+                    // 说明超过了最大的
+                    result += arr[arr.length - 1];
+                    resultArr.push(arr[arr.length - 1])
+                    getInnerMoney(arr, num)
+                    break;
+                }
+            }
+        }
+        getInnerMoney(arr, num)
+        console.log(result)
+        return resultArr
+    }
+    console.log(getMoney(arr,27))
+
+</script>

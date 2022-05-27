@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //求一个数组的所有子集
+        // 思路：对于每一个元素，可以选择放进子集，也可以不放进子集，
+        // 对于【[1,2,3]，subset([1,2,3] = subset([1,2])  + （subset([1,2]).forEach + 3）
+        // 就是先求出1，2的所有子集，然后3加进去每一项，在加上没加上3的，就是1,2,3的所有子集
+
+        let arr = [1, 2, 3]
+        function getAll(arr) {
+            let init = [[]]
+            let result;
+            arr.forEach((e, index) => {
+                let pre = JSON.parse(JSON.stringify(init));
+                pre.forEach(e2 => {
+                    e2.push(e)  //给原来的每一个子集都加上，当前循环的项。
+                })
+                result = pre.concat(init) //每一项加完后得到了所有加上了当前子集的结果，还需要加上没加
+                                         //当前子集的结果就是当前子集数组下的所有集合
+                init = result
+            });
+            return result
+        }
+      console.log(getAll(arr))  
+    </script>
+</body>
+
+</html>

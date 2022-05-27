@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+
+    // function similarStr(str1, str2) {
+    //     let result = true
+    //     if (str1.length !== str2.length) return result = false
+    //     const arr1 = str1.split('');
+    //     const arr2 = str2.split('');
+    //     let obj1 = num(arr1)
+    //     let obj2 = num(arr2)
+    //     console.log(obj1, obj2)
+    //     Object.entries(obj1).forEach(([key, value]) => {
+    //         // console.log(obj1[key], obj2[key])
+    //         if (obj1[key] !== obj2[key]) {
+    //             result = false
+    //         }
+    //     })
+    //     return result
+    // }
+
+    // function num(arr) {
+    //     const obj = arr.reduce((acc, cur, index) => {
+    //         acc[cur] ? acc[cur]++ : acc[cur] = 1
+    //         return acc
+    //     }, {})
+    //     return obj
+    // }
+
+
+    // const str1 = '12344'
+    // const str2 = '22134'
+    // console.log(similarStr(str1, str2)) 
+    let name = '小明'
+    let obj = {
+        name: '小小明'
+    }
+    function showName() {
+        console.log(this.name)
+    }
+
+    function mycall(target, fn, ...args) {
+        target.cb = fn
+        target.cb()
+    }
+
+    mycall(obj, showName, '其他参数')
+
+
+</script>

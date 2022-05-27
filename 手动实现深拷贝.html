@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手动实现一个call</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    // var obj = {
+    //     name: '小明',
+    //     age: '18',
+    //     job: {
+    //         price: 20,
+    //         time: 3
+    //     },
+    //     num: [1, 2, 3, 4, 5]
+    // }
+    //记得解决循环引用的问题  new WeakMap
+    const seven = {
+        name: 'seven'
+    }
+    const juejin = {
+        name: 'juejin',
+        relative: seven
+    }
+    seven.relative = juejin
+
+    function deepClone(obj) {
+        let newObj = {}
+        let map = new WeakMap(); //解决循环引用
+        function myClone(obj, key) {
+            existobj = map.get(obj);
+            //如果这个对象已经被记录则直接返回
+            if (existobj) {
+                return existobj;
+            }
+            map.set(obj, true);
+            for (let i in obj) {
+                if (typeof obj[i] == 'object') {
+                    Array.isArray(obj[i]) ? newObj[i] = [] : newObj[i] = {}
+                    myClone(obj[i], i)
+                } else {
+                    key ? newObj[key][i] = obj[i] : newObj[i] = obj[i]
+                }
+            }
+        }
+        myClone(obj)
+        return newObj
+    }
+
+
+
+    // const obj2 = deepClone(obj)
+    // obj.name = '小红'
+    // obj.job.price = 30
+    // obj.num[2] = 100
+    // console.log(obj)
+    // console.log(obj2)
+    const newObj = deepClone(seven)
+    console.log(newObj)
+
+</script>

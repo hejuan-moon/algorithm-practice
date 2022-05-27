@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合寄生继承</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    // let 代码块定义变量，只对该代码内有效
+    (function () {
+        var a = 1
+        console.log(a)
+    })()
+
+    console.log(a)
+
+    function myCons(key, value) {
+        window[key] = value
+        Object.defineProperty(winsdow, key, {
+            enumerable: false,
+            configurable: false,
+            get: () => {
+                return value
+            },
+            set: (newValue) => {
+                if (newValue != value) {
+                    throw Error('不能修改')
+                }else{
+                    return value
+                }
+            }
+        })
+    }
+
+</script>

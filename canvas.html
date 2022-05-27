@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid #faa;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas width="320" height="320" id='canvas'></canvas>
+        <script>
+            const randomColor = () =>"#" + Math.round(Math.random() * 0xffffff).toString(16);
+
+            const canvas = document.getElementsByTagName("canvas")[0];
+            const ctx = canvas.getContext("2d");
+
+            const { PI } = Math;
+            console.log(PI)
+
+            const canvasWidth = 320;//转盘长款宽一致
+            const halfCanvasWidth = canvasWidth / 2;//宽度的一半 用于圆心，半径等
+            // 将 (0,0) 置于圆心
+            ctx.translate(halfCanvasWidth, halfCanvasWidth);
+            ctx.moveTo(0, 0);
+
+            draw(8);
+
+            function draw(length) {
+                const start = -PI / 2;//绘画的起始点正上方
+
+                const radian = 2 * PI / length;//一个扇形跨越的角度 如 一个选项占360度 两个一个占180度 三个一个120度
+
+                const drawSector = (index) => {
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.fillStyle = randomColor();// 随机颜色
+                    ctx.arc(0, 0, halfCanvasWidth, -radian / 2, radian / 2);
+                    ctx.fill();
+                    ctx.closePath();
+
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.fillStyle = "#000";
+                    ctx.font = "14px 微软雅黑";
+                    ctx.fillText("Hello", 50, 10);
+                    ctx.closePath();
+                    ctx.rotate(radian);
+                }
+
+                for (let i = 0; i < length; i++) {
+                    drawSector(i);
+                }
+
+                //! 后画否则会被前面的覆盖
+                // 中心实心圆形
+                ctx.beginPath()
+                ctx.fillStyle = "#f55";
+
+                ctx.arc(0, 0, 12, 0, 2 * PI);
+                ctx.fill();
+
+                ctx.closePath();
+            }
+
+
+
+        </script>
+    </body>
+
+    </html>
+
+</body>
+
+</html>

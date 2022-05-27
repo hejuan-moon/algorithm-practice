@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>防抖和节流</div>
+    <input type="text" />
+    <div class="box"></div>
+
+</body>
+
+</html>
+
+
+<script>
+    // 防抖
+    let telInput = document.querySelector('input')
+    telInput.addEventListener('input', antiShank(setRequest, 2000))
+
+    let box = document.querySelector('.box')
+    box.addEventListener('touchmove',throlle(setRequest,2000))
+
+
+
+    // 封装防抖
+
+    function antiShank(fn, time) {
+        let timer = null;
+        return () => {
+            if (timer) clearTimeout(timer)
+            timer = setTimeout(fn, time);
+        }
+    }
+
+    // 节流
+    function throlle(fn, time) {
+        let timer = null;
+        return () => {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    fn();
+                    timer = null
+                }, time)
+            }
+        }
+
+    }
+
+
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局，左边固定宽度，右边宽度自适应</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    const arr = [1, 2, 3, 4, 5, 6, 7]
+    // 0  1  2  3  len - 4   len - 3   len - 2   len - 1
+    function myReverse(arr) {
+        let len = arr.length;
+        let middle = Math.floor(len / 2)
+        let i = 1;
+        while (i <= middle) {
+            [arr[i - 1], arr[len - i]] = [arr[len - i], arr[i - 1]]
+            i++;
+        }
+        return arr
+    }
+
+    function reverse(arr){
+        let left  = 0;
+        let right = arr.length  - 1;
+        while(left < right){
+            [arr[left],arr[right]]=[arr[right],arr[left]]
+            left ++;
+            right --;
+        }
+    }
+
+    // [1,5,7,10,15,29,40] 34
+    function twoSum(arr,target){
+
+    }
+
+    console.log(myReverse(arr))
+</script>

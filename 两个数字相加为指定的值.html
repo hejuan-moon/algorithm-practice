@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    const arr = [1, 5, 7, 10, 15, 29, 40]
+    //100
+    //100
+    // N 
+    // n * n  
+    function twoSum(arr, target) {
+        let result = []
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 0; j < arr.length; j++) {
+                if (arr[i] + arr[j] == target && i != j) {
+                    result = [arr[i], arr[j]]
+                    return result;
+                }
+            }
+        }
+        return result;
+    }
+
+    console.log(twoSum(arr, 18))
+
+    /**
+     * 双指针之左右指针：一次遍历数组解决
+     * 两数相加，如果小于指定数，那么左边垫有点，left ++
+     *  如果大于指定数，那么右边削一点 right --
+     * 
+     * */
+    function twoSumAdvance(arr, target) {
+        let result = []
+        let left = 0
+        let right = arr.length - 1
+        while (left < right) {
+            var sum = arr[left] + arr[right]
+            if (sum == target) {
+                result.push(left)
+                result.push(right)
+                return result
+            } else if (sum < target) {
+                left++
+            } else {
+                right--
+            }
+        }
+        return result
+    }
+
+    console.log(twoSumAdvance(arr, 36))
+
+    var trueFactorial = factorial
+    factorial = function () {
+        return 0
+    }
+    alert(trueFactorial(5))   //20
+    alert(factorial(5))   //0
+</script>

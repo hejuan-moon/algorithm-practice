@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合寄生继承</title </head>
+
+<body>
+    <div class="big" style="width:100px;height:100px;background-color:black;">
+        <div class="small" style="width:50px;height:50px;background-color:red;"></div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    function Parent(name, age) {
+        this.name = name;
+        this.age = age
+
+    }
+    Parent.prototype.say = function () {
+        console.log("我能说话")
+    }
+
+    function Son(obj) {
+        Parent.call(this, obj.name, obj.age)
+        this.sex = obj.sex
+    }
+    Son.prototype = new Parent()
+    Son.prototype.constructor = Son
+
+    const s1 = new Son({ name: '儿子', age: '3', sex: '男' })
+    console.log(s1)
+    s1.say()
+
+
+    document.getElementsByClassName("small")[0].addEventListener("click", function () {
+        console.log("small div clicked!");
+    });
+
+    document.getElementsByClassName("big")[0].addEventListener("click", function () {
+        console.log("big div clicked!");
+    });
+
+
+</script>

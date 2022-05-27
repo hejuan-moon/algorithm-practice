@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速排序</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+
+    function huiwen2(str) {
+        const arr = str.split('')
+        const len = arr.length
+        let flag = true;
+        for (var i = 0; i < arr.length; i++) {
+            if (len % 2 == 0) {
+                if (arr[i] != arr[len - 1 - i]) {
+                    flag = false;
+                    break;
+                }
+            } else {
+                arr.splice(Math.floor(len / 2), 1)
+                if (arr[i] != arr[len - 1 - i]) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        return flag
+    }
+
+    console.log(huiwen2('abcba'))
+    let str1 = '2342256'
+    let str2 = '2256234'
+
+
+
+</script>

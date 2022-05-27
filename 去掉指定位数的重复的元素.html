@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去掉指定位数的重复的元素</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+<script>
+
+    function cutSame(str, k, cur) {
+        let arr = str.split('');
+        // let preArr = [...arr]
+        let preK = k
+        arr.forEach((e, index) => {
+            if (e == cur) {
+                while (arr[index + (k - 1)] == cur) {
+                    // debugger
+                    if (k == 1) {
+                        if (index + preK <= arr.length - 1 && arr[index + preK] != cur && arr[index - 1] != cur) {
+                            // debugger
+                            arr.splice(index, preK)
+                        }
+                        else if (index + preK == arr.length && (index == 0 || (index >= 1 && arr[index - 1] != cur))) {
+                            // 如果是最后一位的情况
+                            arr.splice(index, preK)
+                        }
+                        break;
+                        k = preK
+
+                    } else {
+                        k--;
+                    }
+
+                }
+
+            }
+        });
+        return arr.join('');
+    }
+
+    function cutSame(str, k, cur) {
+        let arr = str.split('');
+        let preArr = [...arr]
+        let preK = k
+        let count = 0
+        let len = arr.length
+
+        let removed = 0
+        arr.forEach((e, index) => {
+            if (e == cur) {
+                count++
+                if (count == k && index == len - 1) {
+                    console.log("index= " + index,"len = " + len)
+                    // //移除前面的k个
+                    preArr.splice(index + 1 - k - removed, k)
+                }
+            } else {
+                if (count == k) {
+                    //移除前面的k个
+                    preArr.splice(index - k - removed, k)
+                    removed += k
+                }
+                count = 0
+            }
+        });
+        return preArr.join("")
+    }
+
+    console.log(cutSame('2111', 2, '1'))
+</script>

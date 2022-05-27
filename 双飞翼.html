@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 80%;
+            border: 1px red solid;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .wrap>div {
+            height: 300px;
+        }
+
+        .left {
+            float: left;
+            width: 200px;
+            background-color: green;
+            margin-left: -100%;
+        }
+
+        .right {
+            float: left;
+            width: 250px;
+            background-color: blue;
+            margin-left: -250px;
+        }
+
+        .center {
+            float: left;
+            width: 100%;
+            background-color: yellow;
+        }
+
+        .center div {
+            margin-left: 200px;
+            margin-right: 250px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="center">
+            <div>这是中间 这是中间 这是中间</div>
+            </div>
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+</body>
+
+</html>

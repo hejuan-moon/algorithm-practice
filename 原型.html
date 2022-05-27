@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Fn() {
+            this.test1 = function () {
+                console.log('test1()')
+            }
+        }
+
+        Fn.prototype.test2 = function () {
+            console.log('test2()')
+        }
+        var fn = new Fn()
+
+        // fn.test1()
+        // fn.tesst2()
+        // console.log(fn.toString())
+        // fn.test3()
+
+        console.log(Fn.prototype)
+
+        // 1.任何函数都是Function的实例，并且函数既有显示原型属性又有隐式原型属性，所以函数的__proto__==Function.protootpe
+        // 2.函数的显示原型是一个空的object的实例，但是object函数不满足
+
+        // console.log(Fn.prototype.__proto__ == Object.prototype)
+        // console.log(Fn.__proto__ == Function.prototype)
+        // console.log(fn.__proto__ == Fn.prototype)
+
+        let a = { n: 1 }
+        let b = a;
+        a.x = a = { n: 2 }
+        console.log(a.x)
+        console.log(b.x)
+
+    </script>
+</body>
+
+</html>

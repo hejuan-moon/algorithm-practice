@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合寄生继承</title </head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<script>
+    const arr = ['1', '2', '3', '5', '3', '3', '2', '4', '6']
+
+    function getArr(arr) {
+        return new Set(arr)
+    }
+    const a = getArr(arr)
+    console.log(a)
+
+    function getArr2(arr) {
+        let newArr = []
+        arr.forEach(e => {
+            if (newArr.indexOf(e) == -1) {
+                newArr.push(e)
+            }
+        });
+        return newArr
+    }
+    const b = getArr2(arr)
+    console.log(b)
+
+    function getArr3(arr) {
+        const newArr = []
+        arr.forEach((e, index) => {
+            if (arr.indexOf(e) == index) {
+                newArr.push(e)
+            }
+        })
+        return newArr
+    }
+
+    const c = getArr3(arr)
+    console.log(c)
+
+    function getArr4(arr) {
+        let obj = {}
+        let newArr = []
+        arr.forEach(e => {
+            if (!obj[e]) {
+                obj[e] = e
+                newArr.push(e)
+            }
+        })
+        return newArr
+    }
+
+    const d = getArr4(arr)
+    console.log(d)
+
+
+    function getArr5(arr) {
+        arr.sort()
+        let newArr = []
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] != arr[i + 1]) {
+                newArr.push(arr[i])
+            }
+        }
+        return newArr
+    }
+    const e = getArr5(arr)
+    console.log(e)
+
+    function getArr6(arr) {
+        let newArr = []
+        arr.forEach(e => {
+            if (!newArr.includes(e)) {
+                newArr.push(e)
+            }
+        })
+        return newArr
+    }
+    const f = getArr6(arr)
+    console.log(f)
+
+    function getArr7(arr) {
+        let newArr = []
+        let map = new Map()
+        arr.forEach(e => {
+            if (!map.has(e)) {
+                map.set(e, e)
+                newArr.push(e)
+            }
+        })
+        return map
+    }
+
+    const g = getArr7(arr)
+    console.log(g)
+
+    arr.sort()
+    var index = 0
+    for (var fIndex = 0; fIndex < arr.length; fIndex++) {
+        if (arr[fIndex] != arr[index]) {
+            index++
+            arr[index] = arr[fIndex]
+
+        }
+    }
+    // console.log(arr.splice(0, index + 1), 'arr')
+    const newArr = arr.slice(0, index + 1)
+    console.log(newArr, 'arr22')
+
+    var root = {
+        name: 'A',
+        children: [
+            {
+                name: 'B1',
+                children: [
+                    {
+                        name: 'C1',
+                        salary: 1
+                    }
+                ]
+            },
+            {
+                name: 'B2',
+                children: [{ name: 'C2', salary: 1, }, { name: 'C3', salary: 5 }]
+            },
+            {
+                name: 'B3',
+                salary: 1
+            }
+        ]
+    }
+
+    // var total = 0;
+    function getSalary(node) {
+        if (!node.children) {
+           return  node.salary
+        } else {
+            let total = 0;
+             node.children.forEach(child => {
+                total += getSalary(child)
+            })
+            return total
+        }
+
+    }
+    const aa= getSalary(root);
+    console.log(aa)
+
+
+
+</script>

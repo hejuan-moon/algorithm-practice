@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function typeUtils(target) {
+            return Object.prototype.toString.call(target).slice(8, -1)
+        }
+        function cloneUtils(target) {
+            let result;
+            if (typeUtils(target) === 'Object') {
+                result = {}
+            } else if (typeUtils(target) === 'Array') {
+                result = []
+            }
+
+            for (var i in target) {
+                if (typeUtils(target[i]) === 'Object' || typeUtils(target[i]) === 'Array') {
+                    let item = target[i]
+                    result[i] = cloneUtils(item)
+                } else {
+                    result[i] = target[i]
+                }
+
+            }
+            return result;
+
+        }
+
+
+        var arr = [1, [2, 3], 4, 5]
+        var obj = {
+            name: 'xiaoxiao',
+            sex: {
+                option1: '男',
+                option2: '女',
+            },
+            age: 18
+
+        }
+        // var obj2 = cloneUtils(obj)
+
+        // obj2.sex.option1 = '哈哈'
+        // console.log(obj, obj2)
+
+    </script>
+</body>
+
+</html>

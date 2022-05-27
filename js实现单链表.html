@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局，左边固定宽度，右边宽度自适应</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    class Node {
+        constructor(data) {
+            this.data = data;  // 节点的数据域
+            this.prev = null;  // 节点的指针域
+            this.next = null;  // 节点的指针域
+        }
+    }
+    class singlelist {
+        constructor() {
+            this.size = 0;
+            this.head = new Node('head')  //表头节点
+            this.currnode = ''; //当前节点的指向
+        }
+        // 在单链表中寻找item元素
+        find(item) {
+            let currnode = this.head
+            while (currnode && (currnode.data != item)) {
+                currnode = currnode.next
+            }
+            return currnode
+        }
+        //在单链表的指定元素处插入指定数据
+        insertAfter(item, num) {
+            let itemNode = this.find(item);
+
+            if (!itemNode) {  // 如果item元素不存在
+                return;
+            }
+
+            let newNode = new Node(element);
+            newNode.next = itemNode.next; // 若currNode为最后一个节点，则currNode.next为空
+            itemNode.next = newNode;
+
+            this.size++;
+        }
+        // 在单链表中删除一个节点
+        remove(item) {
+            let currNode = this.head;
+            while (currnode.next.data != item) {
+                currnode = currnode.next
+            }
+            currNode.next = currNode.next.next;
+            this.size--;
+        }
+
+    }
+
+</script>

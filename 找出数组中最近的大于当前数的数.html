@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let arr = [2, 1, 2, 4, 3]
+        // 分别找出数组中，一个数后面的最近的大于它本身的数
+
+        // function getLowDistanceMax(arr) {
+        //     let result = []
+        //     let i = 0
+        //     let len = arr.length
+        //     arr.forEach((e, index) => {
+        //         i = index + 1
+        //         while (arr[i] <= e && i + 1 <= len) {
+        //             i++;
+        //         }
+        //         if (i == len) {
+        //             result.push(-1)
+        //         } else {
+        //             result.push(arr[i])
+        //         }
+        //     });
+        //     return result;
+        // }
+
+        // 如果可以轮圈找
+        let arr = [2, 1, 2, 4, 3]
+        // index:3 i=4 len=5
+        // index:4 i=5 len=5
+        function getLowDistanceMax2(arr) {
+            let result = []
+            let i = 0
+            let len = arr.length;
+            arr.forEach((e, index) => {
+                i = index + 1
+                if (!arr[i]) i = 0
+                while (arr[i] <= e && i != index) {
+                    if (i + 1 < len) {
+                        i++;
+                    } else {
+                        i = 0
+                    }
+                }
+                if (i === index) {
+                    result.push(-1)
+                } else {
+                    result.push(arr[i])
+                }
+
+            });
+            return result;
+        }
+        console.log(getLowDistanceMax2(arr))
+
+    </script>
+</body>
+
+</html>

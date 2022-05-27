@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>葡萄</li>
+        <li>草莓</li>
+    </ul>
+    <script>
+        // 回调函数就是将一个函数传递给另外一个函数当做参数使用
+        // 利用递归求阶乘
+        // 兔子序列 1,1,2,3,5,8,13,21
+        var data = [
+            {
+                id: 1,
+                name: '家电',
+                goods: [
+                    {
+                        id: 11,
+                        name: '洗衣机',
+                    },
+                    {
+                        id: 12,
+                        name: '冰箱',
+                        goods: [
+                            {
+                                id: 121,
+                                name: '海尔冰箱'
+                            }
+
+                        ]
+                    },
+                ],
+            },
+            {
+                id: 2,
+                name: '服饰',
+                goods: [
+                    {
+                        id: 21,
+                        name: '裙子',
+                    },
+                    {
+                        id: 22,
+                        name: '牛仔裤',
+                    },
+                ],
+            }
+        ]
+        var result;
+        var temp;
+        function fn(id, data) {
+            // data.forEach(e => {
+            //     if (e.id == id) {
+            //         // return e
+            //         console.log()
+            //     } else if (e.goods && e.goods.length > 0) {
+            //         fn(id, e.goods)
+            //     }
+            // });
+            for(var i =0;i<data.length;i++){
+                if(data[i].id==id){
+                   return data[i]
+                //    console.log(data[i])
+                }else if(data[i].goods && data[i].goods.length>0){
+                   temp = fn(id,data[i].goods)
+                   if(temp != undefined){
+                       return temp
+                   }
+                }
+            }
+        }
+       
+        console.log( fn(22, data));
+        // fn(22, data);
+    </script>
+</body>
+
+</html>
